@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brincolines Cartago</title>
+<meta name="description" content="Alquiler de inflables, resbaladeras y toro mecánico en Cartago, Costa Rica. Cotice y reserve por WhatsApp. Abierto 24 horas.">
+<meta property="og:title" content="Inflables Brincolines Cartago">
+<meta property="og:description" content="Inflables y toro mecánico para su fiesta. Cotice por WhatsApp.">
+<meta property="og:image" content="img/logo.png">
+<meta name="theme-color" content="#d7262f">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<style>[hidden]{display:none!important}</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: banda-arcoíris arriba, catálogo de tarjetas + cotizador lateral que se vuelve barra inferior en el celular */
+:root{
+  --bg:#fffaf3; --surface:#ffffff; --ink:#1d1b3a; --muted:#5d5a7a; --line:#ece4d8;
+  --red:#d7262f; --red-dk:#a8141c; --blue:#2f8fd8; --yellow:#ffc928; --green:#3db04b; --purple:#7b3fb8;
+  --wa:#1fa855; --wa-dk:#168a44;
+  --display:"Lilita One","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+  --body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:18px; color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;margin:0}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:.3px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:8px}
+.rainbow{height:8px;background:linear-gradient(90deg,var(--red) 0 16.6%,#ff8a1f 16.6% 33.3%,var(--yellow) 33.3% 50%,var(--green) 50% 66.6%,var(--blue) 66.6% 83.3%,var(--purple) 83.3%)}
+
+/* Header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{width:48px;height:48px}
+.brand b{font-family:var(--display);font-weight:400;font-size:24px;color:var(--red);line-height:1}
+.brand small{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);font-weight:800}
+nav.links{display:flex;gap:20px;margin-left:auto;font-weight:700}
+nav.links a{text-decoration:none;color:var(--muted)}
+nav.links a:hover{color:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 20px;font-weight:800;text-decoration:none;transition:transform .15s,background .15s}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{background:var(--wa-dk)}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-dk)}
+.btn-ghost{background:var(--surface);color:var(--ink);border:2px solid var(--line)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn svg{width:20px;height:20px;flex:none}
+.cart-btn{position:relative}
+.cart-btn .count{position:absolute;top:-6px;right:-6px;background:var(--yellow);color:var(--ink);border-radius:999px;font-size:12px;min-width:22px;height:22px;display:grid;place-items:center;padding:0 5px;border:2px solid var(--bg)}
+
+/* Hero */
+.hero{padding-block:48px 40px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff1c7;color:#7a5600;font-weight:800;font-size:13px;letter-spacing:1px;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--wa);box-shadow:0 0 0 0 var(--wa);animation:ping 1.8s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(31,168,85,.6)}80%,100%{box-shadow:0 0 0 10px rgba(31,168,85,0)}}
+.hero h1{font-size:clamp(40px,6.4vw,76px);margin-block:16px 14px;color:var(--ink)}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero h1 span{color:var(--blue)}
+.hero p.lead{font-size:19px;color:var(--muted);max-width:52ch;margin:0 0 24px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;padding:0;list-style:none;font-weight:700;color:var(--muted);font-size:15px}
+.facts li{display:flex;align-items:center;gap:8px}
+.facts svg{width:20px;height:20px;color:var(--green)}
+.hero-art{position:relative;aspect-ratio:1;max-width:440px;width:100%;justify-self:center}
+.hero-art .disc{position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--red),#ff8a1f,var(--yellow),var(--green),var(--blue),var(--purple),var(--red));animation:spin 30s linear infinite}
+.hero-art .logo{position:absolute;inset:7%;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 18px 40px rgba(29,27,58,.18)}
+.hero-art .logo img{width:100%;height:100%;object-fit:contain;animation:bounce 2.6s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.badge-price{position:absolute;right:-4px;bottom:8%;background:var(--yellow);color:var(--ink);font-family:var(--display);font-size:20px;padding:10px 16px;border-radius:16px;transform:rotate(-6deg);box-shadow:0 8px 20px rgba(0,0,0,.15);line-height:1.1;text-align:center}
+.badge-price small{display:block;font-family:var(--body);font-weight:800;font-size:11px;letter-spacing:1px;text-transform:uppercase}
+
+/* Promo */
+.promo{background:var(--ink);color:#fff;border-radius:24px;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;padding:20px;margin-block:8px 0}
+.promo img{width:120px;height:120px;border-radius:16px;object-fit:cover}
+.promo h3{font-size:28px;color:var(--yellow)}
+.promo p{margin:6px 0 0;color:#d9d6f0}
+
+/* Sections */
+section{padding-block:56px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px}
+.sec-head h2{font-size:clamp(32px,4.4vw,48px)}
+.sec-head p{margin:6px 0 0;color:var(--muted);max-width:56ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:2px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 16px;font-weight:800;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+
+/* Catalog + quote layout */
+.shop{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(29,27,58,.12)}
+.card .ph{position:relative;aspect-ratio:1;background:#eee;cursor:zoom-in;border:0;padding:0;display:block;width:100%}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.card .tag{position:absolute;top:10px;left:10px;background:#fff;color:var(--ink);font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.8px}
+.card .tag.hot{background:var(--red);color:#fff}
+.card .body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font-size:24px}
+.specs{display:flex;flex-direction:column;gap:2px;font-size:14px;color:var(--muted)}
+.specs span{display:flex;gap:6px;align-items:baseline}
+.specs b{color:var(--ink);font-weight:700}
+.price{display:flex;align-items:baseline;gap:6px;margin-top:auto;padding-top:8px}
+.price strong{font-family:var(--display);font-weight:400;font-size:28px;color:var(--red);font-variant-numeric:tabular-nums}
+.price small{color:var(--muted);font-size:12px}
+.card .actions{display:grid;grid-template-columns:1fr auto;gap:8px}
+.card .actions .btn{padding:10px 14px;font-size:14px}
+.add[aria-pressed="true"]{background:var(--green)}
+.icon-btn{width:44px;height:44px;padding:0;border-radius:50%}
+
+/* Quote panel */
+.quote{position:sticky;top:calc(env(safe-area-inset-top,0px) + 86px);background:var(--surface);border:2px solid var(--ink);border-radius:22px;overflow:hidden}
+.quote .qh{background:var(--yellow);padding:14px 18px;display:flex;justify-content:space-between;align-items:center}
+.quote .qh h3{font-size:24px}
+.quote .qb{padding:16px 18px;display:flex;flex-direction:column;gap:12px;max-height:calc(100vh - 200px);overflow:auto}
+.qitems{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.qitems li{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;font-size:14px}
+.qitems img{width:44px;height:44px;border-radius:10px;object-fit:cover}
+.qitems .n{font-weight:800;line-height:1.2}
+.qitems .p{color:var(--muted);font-variant-numeric:tabular-nums}
+.qitems button{border:0;background:#f4eee6;border-radius:50%;width:30px;height:30px;color:var(--muted);font-weight:800}
+.qitems button:hover{background:var(--red);color:#fff}
+.empty{border:2px dashed var(--line);border-radius:14px;padding:14px;text-align:center;color:var(--muted);font-size:14px}
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-weight:800;font-size:13px}
+.field input,.field select,.field textarea{font:inherit;font-size:15px;border:2px solid var(--line);border-radius:12px;padding:9px 12px;background:var(--bg);color:var(--ink);width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);outline:none}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:2px dashed var(--line);padding-top:12px}
+.total strong{font-family:var(--display);font-weight:400;font-size:30px;color:var(--ink);font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:var(--muted);margin:0}
+.err{color:var(--red);font-size:13px;font-weight:700;margin:0}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;list-style:none;padding:0;margin:0;counter-reset:s}
+.steps li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;counter-increment:s;position:relative}
+.steps li::before{content:counter(s);font-family:var(--display);font-size:22px;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;margin-bottom:12px}
+.steps li:nth-child(1)::before{background:var(--red)}
+.steps li:nth-child(2)::before{background:var(--blue)}
+.steps li:nth-child(3)::before{background:var(--green)}
+.steps h3{font-size:22px;margin-bottom:6px}
+.steps p{margin:0;color:var(--muted)}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:10px;max-width:800px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+.faq summary{font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::after{content:"+";font-family:var(--display);font-size:22px;color:var(--red);line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:10px 0 0;color:var(--muted)}
+
+/* Contact */
+.contact{background:var(--red);color:#fff;border-radius:28px;padding:36px;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+.contact h2{font-size:clamp(32px,4.6vw,52px)}
+.contact p{color:#ffe1e3;margin:10px 0 20px;max-width:46ch}
+.contact .phone{font-family:var(--display);font-size:clamp(30px,4vw,42px);letter-spacing:1px;user-select:all}
+.contact .meta{display:flex;flex-direction:column;gap:12px;background:rgba(0,0,0,.14);border-radius:18px;padding:20px}
+.contact .meta div{display:flex;justify-content:space-between;gap:12px;font-weight:700;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:10px}
+.contact .meta div:last-child{border:0;padding:0}
+.contact .meta span{color:#ffd0d3;font-weight:600}
+.contact .btn-light{background:#fff;color:var(--red)}
+footer{padding-block:28px 110px;color:var(--muted);font-size:14px;text-align:center}
+
+/* Floating WA + mobile bar */
+.fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:50;width:62px;height:62px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 24px rgba(31,168,85,.45);animation:pulse 2.4s infinite}
+.fab svg{width:34px;height:34px;color:#fff}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,168,85,.55)}70%{box-shadow:0 0 0 18px rgba(31,168,85,0)}100%{box-shadow:0 0 0 0 rgba(31,168,85,0)}}
+.mbar{display:none}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(20,18,40,.88);display:grid;place-items:center;padding:16px}
+.lb figure{margin:0;max-width:640px;width:100%;background:var(--surface);border-radius:20px;overflow:hidden}
+.lb img{width:100%;max-height:70vh;object-fit:contain;background:#111}
+.lb figcaption{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.lb figcaption b{font-family:var(--display);font-weight:400;font-size:22px}
+.lb .x{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;border:0;background:#fff;font-size:24px;font-weight:800}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;z-index:70;font-size:14px}
+
+@media (max-width:960px){
+  .shop{grid-template-columns:1fr}
+  .quote{position:static}
+  .quote .qb{max-height:none}
+  nav.links{display:none}
+  .top .wrap > .btn-wa{margin-left:auto}
+}
+@media (max-width:760px){
+  .hero{padding-block:28px}
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-art{max-width:260px;order:-1}
+  .promo{grid-template-columns:auto 1fr}
+  .promo img{width:80px;height:80px}
+  .promo .btn{grid-column:1/-1}
+  .steps{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr;padding:24px}
+  .top .wrap > .btn-wa span{display:none}
+  .fab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--surface);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));gap:10px;align-items:center;box-shadow:0 -6px 20px rgba(0,0,0,.08)}
+  .mbar .sum{flex:1;min-width:0;line-height:1.2}
+  .mbar .sum small{display:block;color:var(--muted);font-size:12px}
+  .mbar .sum b{font-family:var(--display);font-weight:400;font-size:22px}
+  .grid{grid-template-columns:1fr 1fr;gap:12px}
+  .card h3{font-size:19px}
+  .card .body{padding:12px}
+  .specs{font-size:12.5px}
+  .price strong{font-size:22px}
+  .card .actions{grid-template-columns:1fr}
+  .card .actions .icon-btn{display:none}
+}
+@media (max-width:380px){.grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.42 1.3-1.95 1.34-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.93-4.66-4.11-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.47.24.56.79 1.93.86 2.07.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.33Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2M10 21h.01M17 21h.01"/></symbol>
+</svg>
+
+<div class="rainbow"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Inflables Brincolines Cartago, inicio">
+      <img src="img/logo.png" alt="">
+      <span><small>Inflables</small><b>Brincolines</b></span>
+    </a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#catalogo">Inflables</a>
+      <a href="#como">Cómo reservar</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-wa" id="headWa" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span>Escríbanos</span></a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow"><i></i>Abierto las 24 horas · Cartago</span>
+        <h1>¡Que la fiesta <em>rebote</em> con <span>Brincolines</span>!</h1>
+        <p class="lead">Alquiler de inflables, resbaladeras y toro mecánico para cumpleaños, turnos, escuelas y eventos. Arme su fiesta aquí y le confirmamos por WhatsApp en minutos.</p>
+        <div class="ctas">
+          <a class="btn btn-red" href="#catalogo"><svg><use href="#i-cart"/></svg>Armar mi fiesta</a>
+          <a class="btn btn-ghost" id="heroWa" href="#" target="_blank" rel="noopener"><svg style="color:var(--wa)"><use href="#i-wa"/></svg>Consultar disponibilidad</a>
+        </div>
+        <ul class="facts">
+          <li><svg><use href="#i-check"/></svg>Instalamos y retiramos</li>
+          <li><svg><use href="#i-check"/></svg>Equipos limpios y revisados</li>
+          <li><svg><use href="#i-check"/></svg>Toda la provincia de Cartago</li>
+        </ul>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="disc"></div>
+        <div class="logo"><img src="img/logo.png" alt=""></div>
+        <div class="badge-price"><small>Desde</small>₡35.000</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="promo">
+      <img src="img/paquete-toro.jpg" alt="Toro mecánico con six packs de regalo">
+      <div>
+        <h3>Toro mecánico + 4 six packs de regalo</h3>
+        <p>Al contratar el toro mecánico El Chepe le obsequiamos 4 six packs de cerveza Corona o Heineken. Ideal para turnos y fiestas de adultos.</p>
+      </div>
+      <button class="btn btn-wa" data-add="toro-mecanico" type="button"><svg><use href="#i-plus"/></svg>Agregar el toro</button>
+    </div>
+  </div>
+
+  <section id="catalogo">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>Nuestros inflables</h2>
+          <p>Toque una foto para verla grande. Agregue los que quiera y envíe su cotización por WhatsApp. Los precios no incluyen transporte.</p>
+        </div>
+        <div class="chips" role="group" aria-label="Filtrar">
+          <button class="chip" type="button" data-f="todos" aria-pressed="true">Todos</button>
+          <button class="chip" type="button" data-f="ninos" aria-pressed="false">Para niños</button>
+          <button class="chip" type="button" data-f="retos" aria-pressed="false">Retos y adultos</button>
+        </div>
+      </div>
+
+      <div class="shop">
+        <div class="grid" id="grid"></div>
+
+        <aside class="quote" id="cotizar" aria-label="Su cotización">
+          <div class="qh"><h3>Mi fiesta</h3><span id="qCount">0 equipos</span></div>
+          <form class="qb" id="qform" novalidate>
+            <ul class="qitems" id="qitems"></ul>
+            <div class="empty" id="qempty">Todavía no ha agregado inflables. Toque <b>Agregar</b> en los que le gusten.</div>
+            <div class="row2">
+              <div class="field"><label for="qdate">Fecha del evento</label><input type="date" id="qdate"></div>
+              <div class="field"><label for="qtime">Hora</label><input type="time" id="qtime" value="14:00"></div>
+            </div>
+            <div class="field"><label for="qplace">Cantón</label>
+              <select id="qplace">
+                <option>Cartago centro</option><option>Paraíso</option><option>La Unión</option><option>Oreamuno</option><option>El Guarco</option><option>Alvarado</option><option>Jiménez</option><option>Turrialba</option><option>Fuera de Cartago</option>
+              </select>
+            </div>
+            <div class="field"><label for="qaddr">Dirección o lugar</label><input id="qaddr" placeholder="Ej.: Salón comunal de Tejar"></div>
+            <div class="field"><label for="qname">Su nombre</label><input id="qname" placeholder="Ej.: María Solano" autocomplete="name"></div>
+            <div class="field"><label for="qnote">Detalles (opcional)</label><textarea id="qnote" rows="2" placeholder="Edad de los niños, horas que necesita, tipo de piso…"></textarea></div>
+            <div class="total"><span>Total estimado</span><strong id="qtotal">₡0</strong></div>
+            <p class="note">Precio de alquiler sin transporte. Le confirmamos el costo de traslado según la zona.</p>
+            <p class="err" id="qerr" hidden></p>
+            <button class="btn btn-wa" type="submit"><svg><use href="#i-wa"/></svg>Enviar cotización por WhatsApp</button>
+          </form>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="como" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2>Reservar es muy fácil</h2></div>
+      <ol class="steps">
+        <li><h3>Elija sus inflables</h3><p>Agregue al cotizador los equipos que le gusten y vea el total al instante.</p></li>
+        <li><h3>Envíe por WhatsApp</h3><p>Ponga fecha y lugar. El mensaje sale listo, solo toca enviar.</p></li>
+        <li><h3>Nosotros instalamos</h3><p>Confirmamos transporte, llegamos antes de la fiesta, armamos y luego retiramos.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="preguntas" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2>Preguntas frecuentes</h2></div>
+      <div class="faq">
+        <details open><summary>¿El precio incluye transporte?</summary><p>No. El precio es por el alquiler del equipo. El transporte depende de la distancia y se lo confirmamos por WhatsApp antes de reservar.</p></details>
+        <details><summary>¿Cuánto espacio necesito?</summary><p>Cada inflable indica sus medidas. Deje como mínimo un metro libre alrededor y una conexión eléctrica cerca para el motor.</p></details>
+        <details><summary>¿Lo instalan ustedes?</summary><p>Sí. Llegamos con el equipo, lo armamos, le explicamos el uso y lo retiramos al terminar.</p></details>
+        <details><summary>¿Cómo aparto la fecha?</summary><p>Envíe su cotización por WhatsApp y le indicamos la disponibilidad y la forma de apartar.</p></details>
+        <details><summary>¿Atienden fuera de Cartago?</summary><p>Sí, escríbanos con el lugar del evento y le cotizamos el traslado.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <h2>¿Tiene una fiesta en camino?</h2>
+          <p>Escríbanos a cualquier hora. Respondemos por WhatsApp con disponibilidad, fotos y precio de transporte.</p>
+          <div class="phone">8775 7276</div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px">
+            <a class="btn btn-light" id="contactWa" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Abrir WhatsApp</a>
+            <button class="btn btn-ghost" type="button" id="copyNum">Copiar número</button>
+          </div>
+        </div>
+        <div class="meta">
+          <div>Horario <span>Abierto 24 horas</span></div>
+          <div>Zona <span>Provincia de Cartago</span></div>
+          <div>Teléfono <span>+506 8775 7276</span></div>
+          <div>Servicio <span>Inflables y toro mecánico</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr"></span> Inflables Brincolines Cartago · +506 8775 7276</div>
+</footer>
+
+<div class="mbar" id="mbar">
+  <div class="sum"><small id="mcount">0 equipos</small><b id="mtotal">₡0</b></div>
+  <a class="btn btn-red" href="#cotizar">Ver mi fiesta</a>
+</div>
+
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg><use href="#i-wa"/></svg></a>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Foto del inflable">
+  <button class="x" type="button" id="lbx" aria-label="Cerrar">×</button>
+  <figure><img id="lbimg" alt=""><figcaption><b id="lbt"></b><button class="btn btn-wa" type="button" id="lbadd">Agregar</button></figcaption></figure>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+/* ===== Edite aquí el número y los inflables ===== */
+const WHATSAPP = "50687757276";
+const PRODUCTS = [
+  {id:"panameno", name:"Inflable panameño", price:48000, img:"img/panameno.jpg", cat:"ninos", tag:"Más pedido", size:"4,5 m ancho × 4 m largo × 2,5 m alto", age:"0 a 11 años"},
+  {id:"toro-mecanico", name:"Toro mecánico El Chepe", price:85000, img:"img/toro-mecanico.jpg", cat:"retos", tag:"Incluye regalo", hot:true, size:"4,5 m ancho × 4,5 m largo × 2,5 m alto", age:"Jóvenes y adultos"},
+  {id:"gladiador", name:"Gladiador", price:65000, img:"img/gladiador.jpg", cat:"retos", tag:"Reto", size:"6 m largo × 4 m ancho", age:"Jóvenes y adultos"},
+  {id:"mini-castillo", name:"Mini castillo", price:40000, img:"img/mini-castillo.jpg", cat:"ninos", tag:"Con resbaladera", size:"4,5 m largo × 3 m ancho × 2 m alto", age:"0 a 10 años"},
+  {id:"resbaladera", name:"Resbaladera", price:40000, img:"img/resbaladera.jpg", cat:"ninos", tag:"Grande", size:"3 m ancho × 5 m largo × 3 m alto", age:"Niños"},
+  {id:"crayola", name:"Inflable Crayolas", price:35000, img:"img/crayola.jpg", cat:"ninos", tag:"Mejor precio", size:"4 m largo × 3 m ancho × 2,6 m alto", age:"0 a 11 años"},
+];
+/* ================================================= */
+
+const $ = s => document.querySelector(s);
+const crc = n => "₡" + n.toLocaleString("es-CR").replace(/\s/g,".");
+const waLink = text => "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text);
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem("brinco-cart") || "[]").filter(id => PRODUCTS.some(p => p.id === id)); } catch(e) { cart = []; }
+const save = () => { try { localStorage.setItem("brinco-cart", JSON.stringify(cart)); } catch(e) {} };
+
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(toast.t); toast.t=setTimeout(()=>t.hidden=true,1800); }
+
+function renderGrid(filter="todos"){
+  $("#grid").innerHTML = PRODUCTS.filter(p => filter==="todos" || p.cat===filter).map(p => {
+    const inCart = cart.includes(p.id);
+    return `<article class="card">
+      <button class="ph" type="button" data-zoom="${p.id}" aria-label="Ver foto de ${p.name}"><img src="${p.img}" alt="${p.name}" loading="lazy"><span class="tag ${p.hot?'hot':''}">${p.tag}</span></button>
+      <div class="body">
+        <h3>${p.name}</h3>
+        <div class="specs"><span><b>Medidas:</b> ${p.size}</span><span><b>Edad:</b> ${p.age}</span></div>
+        <div class="price"><strong>${crc(p.price)}</strong><small>+ transporte</small></div>
+        <div class="actions">
+          <button class="btn btn-red add" type="button" data-toggle="${p.id}" aria-pressed="${inCart}"><svg><use href="#${inCart?'i-check':'i-plus'}"/></svg>${inCart?'Agregado':'Agregar'}</button>
+          <a class="btn btn-wa icon-btn" href="${waLink(`Hola Brincolines, quiero información del ${p.name} (${crc(p.price)}).`)}" target="_blank" rel="noopener" aria-label="Preguntar por ${p.name} en WhatsApp"><svg><use href="#i-wa"/></svg></a>
+        </div>
+      </div></article>`;
+  }).join("");
+}
+
+function renderQuote(){
+  const items = cart.map(id => PRODUCTS.find(p => p.id===id));
+  const total = items.reduce((s,p)=>s+p.price,0);
+  $("#qitems").innerHTML = items.map(p => `<li><img src="${p.img}" alt=""><div><div class="n">${p.name}</div><div class="p">${crc(p.price)}</div></div><button type="button" data-remove="${p.id}" aria-label="Quitar ${p.name}">×</button></li>`).join("");
+  $("#qempty").hidden = items.length>0;
+  const label = items.length + (items.length===1?" equipo":" equipos");
+  $("#qCount").textContent = label; $("#mcount").textContent = label;
+  $("#qtotal").textContent = crc(total); $("#mtotal").textContent = crc(total);
+}
+
+function toggle(id, forceAdd){
+  const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
+  if(cart.includes(id) && !forceAdd){ cart = cart.filter(x=>x!==id); toast("Quitado: "+p.name); }
+  else if(!cart.includes(id)){ cart.push(id); toast("Agregado: "+p.name); }
+  else toast("Ya está en su fiesta");
+  save(); renderGrid(currentFilter); renderQuote();
+}
+
+let currentFilter = "todos";
+document.addEventListener("click", e => {
+  const t = e.target.closest("[data-toggle],[data-remove],[data-add],[data-zoom],[data-f]");
+  if(!t) return;
+  if(t.dataset.toggle) toggle(t.dataset.toggle);
+  else if(t.dataset.remove) toggle(t.dataset.remove);
+  else if(t.dataset.add){ toggle(t.dataset.add,true); }
+  else if(t.dataset.zoom) openLb(t.dataset.zoom);
+  else if(t.dataset.f){
+    currentFilter = t.dataset.f;
+    document.querySelectorAll("[data-f]").forEach(c=>c.setAttribute("aria-pressed", c===t));
+    renderGrid(currentFilter);
+  }
+});
+
+let lbId=null;
+function openLb(id){ const p=PRODUCTS.find(x=>x.id===id); lbId=id; $("#lbimg").src=p.img; $("#lbimg").alt=p.name; $("#lbt").textContent=p.name+" · "+crc(p.price); $("#lb").hidden=false; $("#lbx").focus(); }
+function closeLb(){ $("#lb").hidden=true; }
+$("#lbx").onclick=closeLb;
+$("#lb").addEventListener("click",e=>{ if(e.target.id==="lb") closeLb(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeLb(); });
+$("#lbadd").onclick=()=>{ toggle(lbId,true); closeLb(); };
+
+/* Fecha mínima: hoy */
+const today = new Date(); const iso = d => new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10);
+$("#qdate").min = iso(today);
+const nextSat = new Date(today); nextSat.setDate(today.getDate() + ((6-today.getDay()+7)%7 || 7)); $("#qdate").value = iso(nextSat);
+
+$("#qform").addEventListener("submit", e => {
+  e.preventDefault();
+  const err=$("#qerr");
+  const items = cart.map(id => PRODUCTS.find(p=>p.id===id));
+  if(!items.length){ err.textContent="Agregue al menos un inflable para cotizar."; err.hidden=false; return; }
+  if(!$("#qdate").value){ err.textContent="Elija la fecha del evento."; err.hidden=false; return; }
+  err.hidden=true;
+  const [y,m,d]=$("#qdate").value.split("-");
+  const fecha = new Date(+y,m-1,+d).toLocaleDateString("es-CR",{weekday:"long",day:"numeric",month:"long"});
+  const lines = [
+    "¡Hola Brincolines! Quiero cotizar para mi fiesta 🎉",
+    "",
+    ...items.map(p=>`• ${p.name} – ${crc(p.price)}`),
+    "",
+    `*Total estimado:* ${crc(items.reduce((s,p)=>s+p.price,0))} + transporte`,
+    `*Fecha:* ${fecha} a las ${$("#qtime").value || "por definir"}`,
+    `*Lugar:* ${$("#qplace").value}${$("#qaddr").value ? ", "+$("#qaddr").value : ""}`,
+  ];
+  if($("#qname").value) lines.push(`*Nombre:* ${$("#qname").value}`);
+  if($("#qnote").value) lines.push(`*Detalles:* ${$("#qnote").value}`);
+  lines.push("", "¿Tienen disponibilidad?");
+  const a=document.createElement("a"); a.href=waLink(lines.join("\n")); a.target="_blank"; a.rel="noopener"; document.body.appendChild(a); a.click(); a.remove();
+});
+
+const general = waLink("Hola Brincolines, quiero información para alquilar un inflable.");
+["#headWa","#heroWa","#contactWa","#fab"].forEach(s=>$(s).href=general);
+
+$("#copyNum").onclick = async () => {
+  try { await navigator.clipboard.writeText("+506 8775 7276"); toast("Número copiado"); }
+  catch(e){ const r=document.createRange(); r.selectNodeContents(document.querySelector(".contact .phone")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast("Número seleccionado"); }
+};
+$("#yr").textContent = today.getFullYear();
+renderGrid(); renderQuote();
+</script>
+
+</body>
+</html>
